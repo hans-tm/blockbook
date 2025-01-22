@@ -34,18 +34,18 @@ func init() {
 	TestNetParams.ScriptHashAddrID = []byte{196} 
 }
 
-// DogecoinParser handle
-type DogecoinParser struct {
+// ShibacoinParser handle
+type ShibacoinParser struct {
 	*btc.BitcoinLikeParser
 }
 
-// NewDogecoinParser returns new DogecoinParser instance
-func NewDogecoinParser(params *chaincfg.Params, c *btc.Configuration) *DogecoinParser {
-	return &DogecoinParser{BitcoinLikeParser: btc.NewBitcoinLikeParser(params, c)}
+// NewShibacoinParser returns new ShibacoinParser instance
+func NewShibacoinParser(params *chaincfg.Params, c *btc.Configuration) *ShibacoinParser {
+	return &ShibacoinParser{BitcoinLikeParser: btc.NewBitcoinLikeParser(params, c)}
 }
 
-// GetChainParams contains network parameters for the main Dogecoin network,
-// and the test Dogecoin network
+// GetChainParams contains network parameters for the main Shibacoin network,
+
 func GetChainParams(chain string) *chaincfg.Params {
 	if !chaincfg.IsRegistered(&MainNetParams) {
 		err := chaincfg.Register(&MainNetParams)
@@ -66,7 +66,7 @@ func GetChainParams(chain string) *chaincfg.Params {
 
 // ParseBlock parses raw block to our Block struct
 // it has special handling for Auxpow blocks that cannot be parsed by standard btc wire parser
-func (p *DogecoinParser) ParseBlock(b []byte) (*bchain.Block, error) {
+func (p *ShibacoinParser) ParseBlock(b []byte) (*bchain.Block, error) {
 	r := bytes.NewReader(b)
 	w := wire.MsgBlock{}
 	h := wire.BlockHeader{}
