@@ -25,7 +25,7 @@
         "version": "1.0.3",
         "binary_url": "https://github.com/hans-tm/shibacoin/releases/download/v1.0.3.0/shibacoin-1.0.3.0-linux.tar.gz",
         "verification_type": "sha256",
-        "verification_source": "acb7b63f82aebe8a939c4f8139dd782729f8b80bec0bde1cbc5ccc81fa950c3c",
+        "verification_source": "f1bd7c284e0813c30eb43089046f90cb703d759f73709ba052ee7830902598b0",
         "extract_command": "tar -C backend --strip 1 -xf",
         "exec_command_template": "{{.Env.BackendInstallPath}}/{{.Coin.Alias}}/bin/shibacoind -datadir={{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend -conf={{.Env.BackendInstallPath}}/{{.Coin.Alias}}/{{.Coin.Alias}}.conf -pid=/run/{{.Coin.Alias}}/{{.Coin.Alias}}.pid",
         "logrotate_files_template": "{{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend/*.log",
