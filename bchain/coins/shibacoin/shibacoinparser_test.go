@@ -507,7 +507,7 @@ func Test_PackTx(t *testing.T) {
 		tx        bchain.Tx
 		height    uint32
 		blockTime int64
-		parser    *DogecoinParser
+		parser    *ShibacoinParser
 	}
 	tests := []struct {
 		name    string
@@ -558,7 +558,7 @@ func Test_PackTx_Testnet(t *testing.T) {
 		tx        bchain.Tx
 		height    uint32
 		blockTime int64
-		parser    *DogecoinParser
+		parser    *ShibacoinParser
 	}
 	tests := []struct {
 		name    string
@@ -607,7 +607,7 @@ func Test_PackTx_Testnet(t *testing.T) {
 func Test_UnpackTx(t *testing.T) {
 	type args struct {
 		packedTx string
-		parser   *DogecoinParser
+		parser   *ShibacoinParser
 	}
 	tests := []struct {
 		name    string
@@ -658,7 +658,7 @@ func Test_UnpackTx(t *testing.T) {
 func Test_UnpackTx_Testnet(t *testing.T) {
 	type args struct {
 		packedTx string
-		parser   *DogecoinParser
+		parser   *ShibacoinParser
 	}
 	tests := []struct {
 		name    string
