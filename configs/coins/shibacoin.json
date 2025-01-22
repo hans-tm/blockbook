@@ -27,7 +27,7 @@
         "verification_type": "sha256",
         "verification_source": "862c75e49ddb02f75ca230579381a643bd2bcd80cb11b23cec05bc95b5a8c661",
         "extract_command": "tar -C backend --strip 1 -xf",
-        "exclude_files": ["bin/shibacoin-qt"],
+        "exclude_files": ["shibacoin-qt"],
         "exec_command_template": "{{.Env.BackendInstallPath}}/{{.Coin.Alias}}/bin/shibacoind -datadir={{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend -conf={{.Env.BackendInstallPath}}/{{.Coin.Alias}}/{{.Coin.Alias}}.conf -pid=/run/{{.Coin.Alias}}/{{.Coin.Alias}}.pid",
         "logrotate_files_template": "{{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend/*.log",
         "postinst_script_template": "",
