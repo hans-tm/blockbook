@@ -41,8 +41,6 @@
             "rpcthreads": 16,
             "upnp": 0,
             "whitelist": "127.0.0.1"
-        },
-        "platforms": {
         }
     },
     "blockbook": {
