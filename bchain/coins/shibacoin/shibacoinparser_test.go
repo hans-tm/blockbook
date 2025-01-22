@@ -65,7 +65,7 @@ func Test_GetAddrDescFromAddress_Mainnet(t *testing.T) {
 			wantErr: false,
 		},
 	}
-	parser := NewDogecoinParser(GetChainParams("main"), &btc.Configuration{})
+	parser := NewShibacoinParser(GetChainParams("main"), &btc.Configuration{})
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -129,7 +129,7 @@ func Test_GetAddrDescFromAddress_Testnet(t *testing.T) {
 			wantErr: false,
 		},
 	}
-	parser := NewDogecoinParser(GetChainParams("test"), &btc.Configuration{})
+	parser := NewShibacoinParser(GetChainParams("test"), &btc.Configuration{})
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -201,7 +201,7 @@ func Test_GetAddressesFromAddrDesc_Mainnet(t *testing.T) {
 		},
 	}
 
-	parser := NewDogecoinParser(GetChainParams("main"), &btc.Configuration{})
+	parser := NewShibacoinParser(GetChainParams("main"), &btc.Configuration{})
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -290,7 +290,7 @@ func Test_GetAddressesFromAddrDesc_Testnet(t *testing.T) {
 		},
 	}
 
-	parser := NewDogecoinParser(GetChainParams("test"), &btc.Configuration{})
+	parser := NewShibacoinParser(GetChainParams("test"), &btc.Configuration{})
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -521,7 +521,7 @@ func Test_PackTx(t *testing.T) {
 				tx:        testTx1,
 				height:    200301,
 				blockTime: 1519053456,
-				parser:    NewDogecoinParser(GetChainParams("main"), &btc.Configuration{}),
+				parser:    NewShibacoinParser(GetChainParams("main"), &btc.Configuration{}),
 			},
 			want:    testTxPacked1,
 			wantErr: false,
@@ -532,7 +532,7 @@ func Test_PackTx(t *testing.T) {
 				tx:        testTx2,
 				height:    71994,
 				blockTime: 1519050987,
-				parser:    NewDogecoinParser(GetChainParams("main"), &btc.Configuration{}),
+				parser:    NewShibacoinParser(GetChainParams("main"), &btc.Configuration{}),
 			},
 			want:    testTxPacked2,
 			wantErr: false,
@@ -572,7 +572,7 @@ func Test_PackTx_Testnet(t *testing.T) {
 				tx:        testTx1_Testnet,
 				height:    3200011,
 				blockTime: 1622709609,
-				parser:    NewDogecoinParser(GetChainParams("test"), &btc.Configuration{}),
+				parser:    NewShibacoinParser(GetChainParams("test"), &btc.Configuration{}),
 			},
 			want:    testTxPacked1_Testnet,
 			wantErr: false,
@@ -583,7 +583,7 @@ func Test_PackTx_Testnet(t *testing.T) {
 				tx:        testTx2_Testnet,
 				height:    3200006,
 				blockTime: 1622708728,
-				parser:    NewDogecoinParser(GetChainParams("test"), &btc.Configuration{}),
+				parser:    NewShibacoinParser(GetChainParams("test"), &btc.Configuration{}),
 			},
 			want:    testTxPacked2_Testnet,
 			wantErr: false,
@@ -620,7 +620,7 @@ func Test_UnpackTx(t *testing.T) {
 			name: "dogecoin-1",
 			args: args{
 				packedTx: testTxPacked1,
-				parser:   NewDogecoinParser(GetChainParams("main"), &btc.Configuration{}),
+				parser:   NewShibacoinParser(GetChainParams("main"), &btc.Configuration{}),
 			},
 			want:    &testTx1,
 			want1:   200301,
@@ -630,7 +630,7 @@ func Test_UnpackTx(t *testing.T) {
 			name: "dogecoin-2",
 			args: args{
 				packedTx: testTxPacked2,
-				parser:   NewDogecoinParser(GetChainParams("main"), &btc.Configuration{}),
+				parser:   NewShibacoinParser(GetChainParams("main"), &btc.Configuration{}),
 			},
 			want:    &testTx2,
 			want1:   71994,
@@ -671,7 +671,7 @@ func Test_UnpackTx_Testnet(t *testing.T) {
 			name: "dogecoin-testnet-1",
 			args: args{
 				packedTx: testTxPacked1_Testnet,
-				parser:   NewDogecoinParser(GetChainParams("test"), &btc.Configuration{}),
+				parser:   NewShibacoinParser(GetChainParams("test"), &btc.Configuration{}),
 			},
 			want:    &testTx1_Testnet,
 			want1:   3200011,
@@ -681,7 +681,7 @@ func Test_UnpackTx_Testnet(t *testing.T) {
 			name: "dogecoin-testnet-2",
 			args: args{
 				packedTx: testTxPacked2_Testnet,
-				parser:   NewDogecoinParser(GetChainParams("test"), &btc.Configuration{}),
+				parser:   NewShibacoinParser(GetChainParams("test"), &btc.Configuration{}),
 			},
 			want:    &testTx2_Testnet,
 			want1:   3200006,
@@ -835,7 +835,7 @@ func helperLoadBlock(t *testing.T, height int) []byte {
 }
 
 func TestParseBlock(t *testing.T) {
-	p := NewDogecoinParser(GetChainParams("main"), &btc.Configuration{})
+	p := NewShibacoinParser(GetChainParams("main"), &btc.Configuration{})
 
 	for height, tb := range testParseBlockTxs {
 		b := helperLoadBlock(t, height)
@@ -928,7 +928,7 @@ func helperLoadBlock_Testnet(t *testing.T, height int) []byte {
 }
 
 func TestParseBlock_Testnet(t *testing.T) {
-	p := NewDogecoinParser(GetChainParams("test"), &btc.Configuration{})
+	p := NewShibacoinParser(GetChainParams("test"), &btc.Configuration{})
 
 	for height, tb := range testParseBlockTxs_Testnet {
 		b := helperLoadBlock_Testnet(t, height)
