@@ -116,26 +116,29 @@ type MempoolTx struct {
 	CoinSpecificData interface{}    `json:"-"`
 }
 
-// TokenType - type of token
-type TokenType int
+// // Deprecated: Use TokenStandard instead.
+// type TokenType int
 
-// TokenType enumeration
+// TokenStandard - standard of token
+type TokenStandard int
+
+// TokenStandard enumeration
 const (
-	FungibleToken    = TokenType(iota) // ERC20/BEP20
-	NonFungibleToken                   // ERC721/BEP721
-	MultiToken                         // ERC1155/BEP1155
+	FungibleToken    = TokenStandard(iota) // ERC20/BEP20
+	NonFungibleToken                       // ERC721/BEP721
+	MultiToken                             // ERC1155/BEP1155
 )
 
-// TokenTypeName specifies type of token
-type TokenTypeName string
+// TokenStandardName specifies type of token
+type TokenStandardName string
 
 // Token types
 const (
-	UnknownTokenType   TokenTypeName = ""
-	UnhandledTokenType TokenTypeName = "-"
+	UnknownTokenStandard   TokenStandardName = ""
+	UnhandledTokenStandard TokenStandardName = "-"
 
-	// XPUBAddressTokenType is address derived from xpub
-	XPUBAddressTokenType TokenTypeName = "XPUBAddress"
+	// XPUBAddressStandard is address derived from xpub
+	XPUBAddressStandard TokenStandardName = "XPUBAddress"
 )
 
 // TokenTransfers is array of TokenTransfer
@@ -144,7 +147,7 @@ type TokenTransfers []*TokenTransfer
 func (a TokenTransfers) Len() int      { return len(a) }
 func (a TokenTransfers) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 func (a TokenTransfers) Less(i, j int) bool {
-	return a[i].Type < a[j].Type
+	return a[i].Standard < a[j].Standard
 }
 
 // Block is block header and list of transactions
@@ -333,6 +336,7 @@ type BlockChain interface {
 	EthereumTypeGetBalance(addrDesc AddressDescriptor) (*big.Int, error)
 	EthereumTypeGetNonce(addrDesc AddressDescriptor) (uint64, error)
 	EthereumTypeEstimateGas(params map[string]interface{}) (uint64, error)
+	EthereumTypeGetEip1559Fees() (*Eip1559Fees, error)
 	EthereumTypeGetErc20ContractBalance(addrDesc, contractDesc AddressDescriptor) (*big.Int, error)
 	EthereumTypeGetSupportedStakingPools() []string
 	EthereumTypeGetStakingPoolsData(addrDesc AddressDescriptor) ([]StakingPoolData, error)
